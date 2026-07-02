@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        // 应用配置
+        // 应用配置 aaaaaa
         APP_NAME = 'jenkins-advanced'
         IMAGE_NAME = 'my-hello-jenkins'
         CONTAINER_NAME = 'jenkins-advanced-app'
