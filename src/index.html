@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jenkins Advanced Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { font-size: 3em; margin-bottom: 10px; }
+        .version { 
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .info-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .badge {
+            display: inline-block;
+            background: #2ecc71;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🚀 Jenkins 进阶实战</h1>
+        <div class="version">版本: <span id="version">v1.0.0</span></div>
+        
+        <div class="info-grid">
+            <div class="info-item">
+                <strong>环境</strong><br>
+                <span id="environment">开发</span>
+            </div>
+            <div class="info-item">
+                <strong>构建编号</strong><br>
+                <span id="buildNumber">#0</span>
+            </div>
+            <div class="info-item">
+                <strong>部署时间</strong><br>
+                <span id="deployTime">--</span>
+            </div>
+            <div class="info-item">
+                <strong>状态</strong><br>
+                <span class="badge" id="status">✅ 运行中</span>
+            </div>
+        </div>
+
+        <h3>📦 功能列表</h3>
+        <ul>
+            <li>✅ 自动化 CI/CD 流水线</li>
+            <li>✅ 多环境部署 (开发/生产)</li>
+            <li>✅ 自动化测试</li>
+            <li>✅ 蓝绿部署</li>
+            <li>✅ 一键回滚</li>
+        </ul>
+
+        <div class="footer">
+            Powered by Jenkins Pipeline | 
+            <span id="timestamp"></span>
+        </div>
+    </div>
+
+    <script>
+        // 显示当前信息
+        document.getElementById('version').textContent = 
+            new URLSearchParams(location.search).get('v') || 'dev-latest';
+        document.getElementById('environment').textContent = 
+            new URLSearchParams(location.search).get('env') || '开发环境';
+        document.getElementById('buildNumber').textContent = 
+            '#' + (new URLSearchParams(location.search).get('build') || '0');
+        document.getElementById('deployTime').textContent = 
+            new Date().toLocaleString();
+        document.getElementById('timestamp').textContent = 
+            new Date().toLocaleString();
+    </script>
+</body>
+</html>

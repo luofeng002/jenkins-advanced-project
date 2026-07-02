@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app-dev:
+    image: my-hello-jenkins:${BUILD_VERSION:-latest}
+    container_name: jenkins-advanced-dev
+    ports:
+      - "8088:80"
+    environment:
+      - ENV=development
+    restart: unless-stopped
+
+  app-prod:
+    image: my-hello-jenkins:${BUILD_VERSION:-latest}
+    container_name: jenkins-advanced-prod
+    ports:
+      - "8089:80"
+    environment:
+      - ENV=production
+    restart: unless-stopped
