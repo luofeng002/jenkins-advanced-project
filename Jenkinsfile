@@ -166,8 +166,8 @@ pipeline {
                     构建编号: ${BUILD_NUMBER}
                     版本号: ${VERSION}
                     部署环境: ${params.DEPLOY_ENV}
-                    构建时间: $(date)
-                    Git提交: $(git rev-parse --short HEAD)
+                    构建时间: \$(date)
+                    Git提交: \$(git rev-parse --short HEAD)
                     EOF
                 '''
                 archiveArtifacts artifacts: 'build-info.txt'
