@@ -60,8 +60,10 @@ pipeline {
         stage('📥 拉取代码') {
             steps {
                 echo '从 GitHub 拉取代码...'
-                git url: 'https://github.com/luofeng002/jenkins-advanced-project.git',
-                    branch: 'main',
+                git (
+                    url: 'https://github.com/luofeng002/jenkins-advanced-project.git',
+                    branch: 'main'
+                )
                     //credentialsId: 'github-token'
                 echo '✅ 代码拉取完成'
                 sh 'ls -la'
