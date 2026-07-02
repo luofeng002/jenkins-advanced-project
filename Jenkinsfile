@@ -10,7 +10,7 @@ pipeline {
         PORT = '8088'
         
         // 修复 Git TLS 问题
-        GIT_SSL_NO_VERIFY = 'true'
+       // GIT_SSL_NO_VERIFY = 'true'
     }
 
     parameters {
@@ -46,11 +46,11 @@ pipeline {
                 ════════════════════════════════════════
                 '''
                 
-                // 修复 Git
-                sh '''
-                    git config --global http.sslVerify false
-                    echo "✅ Git 环境准备完成"
-                '''
+                // // 修复 Git
+                // sh '''
+                //     git config --global http.sslVerify false
+                //     echo "✅ Git 环境准备完成"
+                // '''
             }
         }
 
@@ -62,7 +62,7 @@ pipeline {
                 echo '从 GitHub 拉取代码...'
                 git url: 'https://github.com/luofeng002/jenkins-advanced-project.git',
                     branch: 'main',
-                    credentialsId: 'github-token'
+                    //credentialsId: 'github-token'
                 echo '✅ 代码拉取完成'
                 sh 'ls -la'
             }
