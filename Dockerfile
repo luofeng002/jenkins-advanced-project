@@ -1,4 +1,4 @@
-# 使用 Nginx 基础镜像 
+# 使用 Nginx 基础镜像  
 FROM nginx:alpine
 
 # 创建应用目录
