@@ -160,15 +160,18 @@ pipeline {
         // ============================================
         stage('📦 归档') {
             steps {
-                sh '''
-                    echo "应用名称: ${APP_NAME}" > build-info.txt
-                    echo "构建编号: ${BUILD_NUMBER}" >> build-info.txt
-                    echo "版本号: ${VERSION}" >> build-info.txt
-                    echo "部署环境: ${params.DEPLOY_ENV}" >> build-info.txt
-                    echo "构建时间: $(date)" >> build-info.txt
-                    echo "Git提交: $(git rev-parse --short HEAD)" >> build-info.txt
-                '''
-                archiveArtifacts artifacts: 'build-info.txt'
+                script {
+                    def deployEnv = params.DEPLOY_ENV
+                    sh '''
+                        echo "应用名称: ${APP_NAME}" > build-info.txt
+                        echo "构建编号: ${BUILD_NUMBER}" >> build-info.txt
+                        echo "版本号: ${VERSION}" >> build-info.txt
+                        echo "部署环境: ${deployEnv}" >> build-info.txt
+                        echo "构建时间: $(date)" >> build-info.txt
+                        echo "Git提交: $(git rev-parse --short HEAD)" >> build-info.txt
+                    '''
+                    archiveArtifacts artifacts: 'build-info.txt'
+                }
             }
         }
     }
