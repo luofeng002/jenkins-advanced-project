@@ -7,7 +7,7 @@ pipeline {
         IMAGE_NAME = 'my-hello-jenkins'
         CONTAINER_NAME = 'jenkins-advanced-app'
         VERSION = "${env.BUILD_NUMBER}"
-        PORT = '8088'
+        PORT = '8188'
         
         // 修复 Git TLS 问题
        // GIT_SSL_NO_VERIFY = 'true'
@@ -121,7 +121,7 @@ pipeline {
                 echo "部署到 ${params.DEPLOY_ENV} 环境..."
                 script {
                     def env = params.DEPLOY_ENV
-                    def port = env == 'prod' ? '8089' : '8088'
+                    def port = env == 'prod' ? '8189' : '8188'
                     def container = "jenkins-advanced-${env}"
                     
                     sh """
@@ -144,7 +144,7 @@ pipeline {
                     
                     // 健康检查
                     sh """
-                        if curl -s http://localhost:${port}/ | grep -q "Jenkins"; then
+                        if curl -s http://172.26.129.1/:${port}/ | grep -q "Jenkins"; then
                             echo "✅ 部署成功！访问: http://localhost:${port}"
                         else
                             echo "❌ 部署失败"
