@@ -144,7 +144,7 @@ pipeline {
                     
                     // 健康检查
                     sh """
-                        if curl -s http://172.26.129.1/:${port}/ | grep -q "Jenkins"; then
+                        if curl -s http://172.26.129.1:${port}/ | grep -q "Jenkins"; then
                             echo "✅ 部署成功！访问: http://localhost:${port}"
                         else
                             echo "❌ 部署失败"
