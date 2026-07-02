@@ -14,7 +14,7 @@ fi
 
 # 测试 2: 测试 HTTP 响应
 echo "测试 2: 测试 HTTP 响应..."
-if curl -s -o /dev/null -w "%{http_code}" http://localhost:8888/ | grep -q "200"; then
+if curl -s -o /dev/null -w "%{http_code}" http://172.26.129.1:8888/ | grep -q "200"; then
     echo "✅ HTTP 响应正常"
 else
     echo "❌ HTTP 响应异常"
@@ -23,7 +23,7 @@ fi
 
 # 测试 3: 测试页面内容
 echo "测试 3: 测试页面内容..."
-if curl -s http://localhost:8888/ | grep -q "Jenkins"; then
+if curl -s http://172.26.129.1:8888/ | grep -q "Jenkins"; then
     echo "✅ 页面内容正确"
 else
     echo "❌ 页面内容错误"
